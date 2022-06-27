@@ -3,10 +3,12 @@ const popDOM = document.getElementById('popup-container');
 const messageDOM = document.getElementById('successMessage');
 const wrongLettersDOM = document.getElementById('wrong-letters');
 const victimDOM = document.querySelectorAll('.victim');
+const letterMessageDOM = document.getElementById('message');
+const playAgainButton = document.getElementById('playAgain');
 
 const correctLetters = [];
 const wrongLetters = [];
-const selectedWord = randomWord();
+let selectedWord = randomWord();
 
 function randomWord() {
     const words = ["javascript", "python", "java", "kotlin", "php"];
@@ -53,9 +55,12 @@ function updateWrongLetters() {
         } else {
             item.style.display = "none";
         }
-
-
     })
+
+    if (wrongLetters.length == victimDOM.length) {
+        popDOM.style.display = "flex";
+        messageDOM.innerText = "Unfortunately you were hanged :)"
+    }
 
 }
 
@@ -64,6 +69,30 @@ function updateWrongLetters() {
 Google: keycode event 
 https://www.toptal.com/developers/keycode/for/a
 */
+
+function displayMessage() {
+    letterMessageDOM.classList.add("show")
+
+    setTimeout(() => {
+        letterMessageDOM.classList.remove("show")
+    }, 2000)
+}
+
+playAgainButton.addEventListener("click", () => {
+    // listeleri sıfırlayalım
+    correctLetters.splice(0);
+    wrongLetters.splice(0);
+
+    // yeni bir kelime hazırlamamız gerekiyor, o yüzden randomWord() fonksiyonunu kullanıyoruz.
+    selectedWord = randomWord();
+
+    // Dom'u tekrardan çağırıp hazırlamamız gerekiyor, çünkü yeni üretilen kelimenin ekrana yansıması için
+    displayWord();
+    updateWrongLetters();
+
+    //ekranda gözüken uyarıyı da buradan gizleyelim
+    popDOM.style.display = "none";
+});
 
 
 window.addEventListener('keydown', e => {
@@ -84,7 +113,7 @@ window.addEventListener('keydown', e => {
                 // displayWord'u çağırıyoruz ki update edilsin!
                 displayWord();
             } else {
-                console.log('kelime var zati');
+               displayMessage();
             }
         }
         else {
@@ -94,6 +123,8 @@ window.addEventListener('keydown', e => {
 
                 // updateWrongLetters'ı tekrar çağırmazsak, hatalı harfleri ekranda göremeyiz, çünkü update etmez!
                 updateWrongLetters()
+            } else {
+                displayMessage();
             }
         }
     }
@@ -104,21 +135,6 @@ window.addEventListener('keydown', e => {
 
 
 
-displayWord()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+displayWord();
 
 
