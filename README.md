@@ -4,7 +4,7 @@
 
 <br>
 
-![Hangman]()
+![Hangman](https://github.com/alikartalonline/Hangman-JavaScript/blob/main/gif/hangman.gif)
 
 <br>
 <hr>
