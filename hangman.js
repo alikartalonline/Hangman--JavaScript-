@@ -7,6 +7,7 @@ const letterMessageDOM = document.getElementById('message');
 const playAgainButton = document.getElementById('playAgain');
 const popupAnimation = document.querySelector('.popup');
 const footerDOM = document.querySelector("#footerId")
+const successOrFailDOM = document.getElementById('successOrFail');
 
 const correctLetters = [];
 const wrongLetters = [];
@@ -37,6 +38,7 @@ function displayWord() {
             popDOM.style.display = "flex";
             messageDOM.innerText = "Tebrikler, Kazandınız!"
             popupAnimation.classList.add("popupAnimationSuccess")
+            successOrFailDOM.innerHTML = ` <div><img src="https://c.tenor.com/LuHp6dgmbJEAAAAC/sans.gif" height="100" width="100" alt=""></div>`
         }
 
     }
@@ -64,6 +66,7 @@ function updateWrongLetters() {
         popDOM.style.display = "flex";
         messageDOM.innerText = "Unfortunately you were hanged :)"
         popupAnimation.classList.add("popupAnimationFail")
+        successOrFailDOM.innerHTML = `<div><img src="https://c.tenor.com/gd3dkWF86i0AAAAC/ghost.gif" height="100" width="100" alt=""></div>`
         wordDOM.innerHTML = `
     ${selectedWord.split('').map(eachLetter => `
         <div class="letter text-primary">
