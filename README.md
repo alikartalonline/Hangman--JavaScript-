@@ -1,1 +1,1 @@
-# Hangman--JavaScript-
+# Hangman-JavaScript

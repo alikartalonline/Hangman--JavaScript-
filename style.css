@@ -26,7 +26,7 @@ body {
 }
 
 .victim {
-    /* display: none; */
+    display: none;
 }
 
 .letter {
@@ -55,5 +55,17 @@ body {
     white-space: nowrap;
 }
 
+#popup-container{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
 
+.popup{
+    background-color: orange;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
+}
 
